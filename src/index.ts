@@ -10,7 +10,7 @@ import path from "path";
 dotenv.config();
 
 // Import modules
-import { connectDB } from "./config/db";
+import connectDB from "./config/db";
 import { autoAdminCreateController } from "./admin/controllers/admin.controller";
 import { urlNotFound } from "./utils/middlewares/urlNotFoundHandler";
 import { adminRouter } from "./admin/routes/admin.routes";
