@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const { DB_URL } = process.env;
 
 // Connect to DB function
-export const connectDB = async () => {
+const connectDB = async () => {
     try {
         const conn = await mongoose.connect((DB_URL + ""));
         let dbName: string = conn?.connection?.name;
@@ -15,3 +15,4 @@ export const connectDB = async () => {
 };
 
 export const db = mongoose.connection;
+export default connectDB;
