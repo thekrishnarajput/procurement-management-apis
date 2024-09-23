@@ -1,0 +1,43 @@
+{
+  "name": "mukesh-karn-04072024",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/hpp": "^0.2.6",
+    "@types/morgan": "^1.9.9",
+    "@types/qs": "^6.9.15",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "express-validator": "^7.1.0",
+    "helmet": "^7.1.0",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.30.1",
+    "mongoose": "^8.4.4",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "pino": "^9.2.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/multer": "^1.4.11",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.3"
+  }
+}
