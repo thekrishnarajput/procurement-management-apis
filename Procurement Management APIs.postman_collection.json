@@ -1,0 +1,2194 @@
+{
+	"info": {
+		"_postman_id": "5af22377-6830-417a-bafd-f656be5602d8",
+		"name": "Procurement Management APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20048469"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Admin Login | {{host}}/api/admin/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData).to.have.property('success');",
+									"  pm.expect(responseData).to.have.property('message');",
+									"  pm.expect(responseData).to.have.property('data');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Success field is a boolean value\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.success).to.be.a('boolean');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field is a string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.message).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Data field should be empty\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.data).to.be.empty;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@example.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/admin/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"login"
+							]
+						},
+						"description": "### Admin Login\n\nThis endpoint is used to authenticate an admin user.\n\n#### Request Body\n\n- `email` (string, required): The email of the admin user.\n- `password` (string, required): The password of the admin user.\n    \n\nExample:\n\n``` json\n{\n  \"email\": \"example@example.com\",\n  \"password\": \"********\"\n}\n\n ```\n\n#### Response\n\nThe response will include the authentication token for the admin user.\n\nExample:\n\n``` json\n{\n  \"token\": \"********\"\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "Admin Login | {{host}}/api/admin/login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin@example.com\",\r\n    \"password\": \"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/admin/login",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "434"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b2-JVTi15Y0cfLOaOd36A5QCvFfbkI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 28 Apr 2024 09:49:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Logged in successfully!\",\n    \"data\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Ik11a2VzaCBLYXJuIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsIm1vYmlsZV9udW1iZXIiOjg5NzY1NDMyMTAsInJvbGUiOjEsInN0YXR1cyI6MSwiY3JlYXRlZF9hdCI6IjIwMjQtMDQtMjBUMTU6MjI6MDkuMDAwWiIsInVwZGF0ZWRfYXQiOiIyMDI0LTA0LTIwVDE1OjIyOjA5LjAwMFoiLCJpYXQiOjE3MTQyOTc3ODksImV4cCI6MTcxNDM4NDE4OX0.v1DgZ-7tP4MuThVBz7jayAyMXd2AoLkMSiBiVm9Fz94\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Clients",
+			"item": [
+				{
+					"name": "Register Client | {{host}}/api/client/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Schema is valid\", function () {",
+									"  var schema = {",
+									"    type: \"object\",",
+									"    properties: {",
+									"      success: {",
+									"        type: \"boolean\"",
+									"      },",
+									"      message: {",
+									"        type: \"string\"",
+									"      },",
+									"      data: {",
+									"        type: [\"object\", \"null\"]",
+									"      }",
+									"    },",
+									"    required: [\"success\", \"message\", \"data\"],",
+									"  };",
+									"",
+									"  var response = pm.response.json();",
+									"  pm.expect(tv4.validate(response, schema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Client three\",\r\n    \"email\": \"client3@example.com\",\r\n    \"mobile_number\": 1234561244,\r\n    \"password\": \"client3\",\r\n    \"address\": \"123 Main St, City, Country\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/client/register",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"register"
+							]
+						},
+						"description": "\nThe `POST /api/user/register` endpoint is used to register a new user. The request should include the user's name, email, mobile number, password, and address in the request body.\n\n### Request Body\n- `name` (string): The name of the user.\n- `email` (string): The email address of the user.\n- `mobile_number` (number): The mobile number of the user.\n- `password` (string): The password for the user account.\n- `address` (string): The address of the user.\n\n### Response\nThe response for this request is in JSON format with the following schema:\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"success\": {\n      \"type\": \"boolean\"\n    },\n    \"message\": {\n      \"type\": \"string\"\n    },\n    \"data\": {\n      \"type\": \"null\"\n    }\n  }\n}\n```\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Login client | {{host}}/api/client/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"// Test for required fields - success, message, and data",
+									"pm.test(\"Response has required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.success).to.exist.and.to.be.a('boolean');",
+									"    pm.expect(responseData.message).to.exist.and.to.be.a('string');",
+									"    pm.expect(responseData.data).to.exist.and.to.be.an('object');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Email is in a valid format\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.email).to.match(/^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$/);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Mobile number is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.data.mobile_number).to.be.a('number');",
+									"    pm.expect(responseData.data.mobile_number).to.be.at.least(0, \"Mobile number should be non-negative\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"client3@example.com\",\r\n    \"password\": \"client3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/client/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"login"
+							]
+						},
+						"description": "\n### Login User\n\nThis endpoint allows users to log in by providing their email and password.\n\n#### Request Body\n- `email` (string, required): The email of the user.\n- `password` (string, required): The password of the user.\n\n#### Response\nThe response is a JSON object with the following properties:\n- `success` (boolean): Indicates if the login was successful.\n- `message` (string): A message related to the login process.\n- `data` (object): An object containing the user's information.\n  - `id` (number): The user's ID.\n  - `name` (string): The user's name.\n  - `email` (string): The user's email.\n  - `mobile_number` (number): The user's mobile number.\n  - `address` (string): The user's address.\n  - `role` (number): The user's role.\n  - `status` (number): The user's status.\n  - `created_at` (string): The timestamp when the user was created.\n  - `updated_at` (string): The timestamp when the user was last updated.\n  - `token` (string): The authentication token for the user.\n\n#### Example Response\n```json\n{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"id\": 0,\n        \"name\": \"\",\n        \"email\": \"\",\n        \"mobile_number\": 0,\n        \"address\": \"\",\n        \"role\": 0,\n        \"status\": 0,\n        \"created_at\": \"\",\n        \"updated_at\": \"\",\n        \"token\": \"\"\n    }\n}\n```\n\n#### JSON Schema\n```json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"success\": {\n            \"type\": \"boolean\"\n        },\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"id\": {\n                    \"type\": \"number\"\n                },\n                \"name\": {\n                    \"type\": \"string\"\n                },\n                \"email\": {\n                    \"type\": \"string\"\n                },\n                \"mobile_number\": {\n                    \"type\": \"number\"\n                },\n                \"address\": {\n                    \"type\": \"string\"\n                },\n                \"role\": {\n                    \"type\": \"number\"\n                },\n                \"status\": {\n                    \"type\": \"number\"\n                },\n                \"created_at\": {\n                    \"type\": \"string\"\n                },\n                \"updated_at\": {\n                    \"type\": \"string\"\n                },\n                \"token\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n```\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update client (Admin/client both) | {{host}}/api/client/update-client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"",
+									"pm.test(\"The success field should be true\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.success).to.be.true;",
+									"});",
+									"",
+									"",
+									"pm.test(\"The 'message' field is an empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.message).to.be.a('string').and.to.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"The data field should be null\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.data).to.be.null;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is 'application/json'\", function () {",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.equal('application/json');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{client_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Krishna Karn\",\r\n    \"address\": \"123 Main St, City, Country\",\r\n    \"password\": \"hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/client/update-client",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"update-client"
+							]
+						},
+						"description": "### Update User Information\n\nThis endpoint allows the user to update their information.\n\n#### Request Body\n\n- `id` (number, optional): The id of the user if admin wants to update.\n- `name` (string, optional): The updated name of the user.\n- `address` (string, optional): The updated address of the user.\n- `password` (string, optional): The user's password for authentication.\n    \n\n#### Response\n\n- `Status: 302`\n- `Content-Type: application/json`\n    \n\n##### Successful Response\n\n``` json\n{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"id\": 0,\n        \"name\": \"\",\n        \"email\": \"\",\n        \"mobile_number\": 0,\n        \"address\": \"\",\n        \"role\": 0,\n        \"status\": 0,\n        \"created_at\": \"\",\n        \"updated_at\": \"\"\n    }\n}\n\n ```\n\n##### Failed Response\n\nIn case of a failed response, specific error messages and status codes will be provided to indicate the reason for the failure."
+					},
+					"response": []
+				},
+				{
+					"name": "Send Order Doc by Client | {{host}}/api/client/send-order-doc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"",
+									"pm.test(\"The success field should be true\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.success).to.be.true;",
+									"});",
+									"",
+									"",
+									"pm.test(\"The 'message' field is an empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.message).to.be.a('string').and.to.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"The data field should be null\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.data).to.be.null;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is 'application/json'\", function () {",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.equal('application/json');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{client_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "document",
+									"type": "file",
+									"src": "/home/neosoft/Downloads/IMG_20240710_140627.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/client/send-order-doc",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"send-order-doc"
+							]
+						},
+						"description": "### Update User Information\n\nThis endpoint allows the user to update their information.\n\n#### Request Body\n\n- `id` (number, optional): The id of the user if admin wants to update.\n- `name` (string, optional): The updated name of the user.\n- `address` (string, optional): The updated address of the user.\n- `password` (string, optional): The user's password for authentication.\n    \n\n#### Response\n\n- `Status: 302`\n- `Content-Type: application/json`\n    \n\n##### Successful Response\n\n``` json\n{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"id\": 0,\n        \"name\": \"\",\n        \"email\": \"\",\n        \"mobile_number\": 0,\n        \"address\": \"\",\n        \"role\": 0,\n        \"status\": 0,\n        \"created_at\": \"\",\n        \"updated_at\": \"\"\n    }\n}\n\n ```\n\n##### Failed Response\n\nIn case of a failed response, specific error messages and status codes will be provided to indicate the reason for the failure."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete client by client/Admin | {{host}}/api/client/delete-client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.success).to.exist;",
+									"    pm.expect(responseData.message).to.exist;",
+									"    pm.expect(responseData.data).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the 'success' field is true\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.success).to.be.true;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the 'data' field is an object\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.data).to.be.an('object');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/client/delete-client",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"delete-client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get client Data by Admin | {{host}}/api/client/get-client/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the success field in the response\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.success).to.exist.and.to.be.a('boolean');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the 'data' object in the response\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.data).to.exist.and.to.be.an('object');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Name and email fields are non-empty strings\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.data.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name field should not be empty\");",
+									"  pm.expect(responseData.data.email).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Email field should not be empty\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/client/get-client/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"get-client",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All client by Admin | {{host}}/api/client/get-all-clients",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response content type is 'application/json'\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the 'success' field is true\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.success).to.be.true;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that 'users' array is present and contains at least one element\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.users).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/client/get-all-clients",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"get-all-clients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Procurement-manager",
+			"item": [
+				{
+					"name": "Register procurement-manager | {{host}}/api/procurement-manager/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Schema is valid\", function () {",
+									"  var schema = {",
+									"    type: \"object\",",
+									"    properties: {",
+									"      success: {",
+									"        type: \"boolean\"",
+									"      },",
+									"      message: {",
+									"        type: \"string\"",
+									"      },",
+									"      data: {",
+									"        type: [\"object\", \"null\"]",
+									"      }",
+									"    },",
+									"    required: [\"success\", \"message\", \"data\"],",
+									"  };",
+									"",
+									"  var response = pm.response.json();",
+									"  pm.expect(tv4.validate(response, schema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Promanager two\",\r\n    \"email\": \"promanager2@example.com\",\r\n    \"mobile_number\": 1234561005,\r\n    \"password\": \"proman2\",\r\n    \"address\": \"123 Main St, City, Country\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/procurement-manager/register",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"procurement-manager",
+								"register"
+							]
+						},
+						"description": "\nThe `POST /api/user/register` endpoint is used to register a new user. The request should include the user's name, email, mobile number, password, and address in the request body.\n\n### Request Body\n- `name` (string): The name of the user.\n- `email` (string): The email address of the user.\n- `mobile_number` (number): The mobile number of the user.\n- `password` (string): The password for the user account.\n- `address` (string): The address of the user.\n\n### Response\nThe response for this request is in JSON format with the following schema:\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"success\": {\n      \"type\": \"boolean\"\n    },\n    \"message\": {\n      \"type\": \"string\"\n    },\n    \"data\": {\n      \"type\": \"null\"\n    }\n  }\n}\n```\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Login procurement-manager | {{host}}/api/procurement-manager/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"// Test for required fields - success, message, and data",
+									"pm.test(\"Response has required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.success).to.exist.and.to.be.a('boolean');",
+									"    pm.expect(responseData.message).to.exist.and.to.be.a('string');",
+									"    pm.expect(responseData.data).to.exist.and.to.be.an('object');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Email is in a valid format\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.email).to.match(/^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$/);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Mobile number is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.data.mobile_number).to.be.a('number');",
+									"    pm.expect(responseData.data.mobile_number).to.be.at.least(0, \"Mobile number should be non-negative\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"promanager1@example.com\",\r\n    \"password\": \"proman1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/procurement-manager/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"procurement-manager",
+								"login"
+							]
+						},
+						"description": "\n### Login User\n\nThis endpoint allows users to log in by providing their email and password.\n\n#### Request Body\n- `email` (string, required): The email of the user.\n- `password` (string, required): The password of the user.\n\n#### Response\nThe response is a JSON object with the following properties:\n- `success` (boolean): Indicates if the login was successful.\n- `message` (string): A message related to the login process.\n- `data` (object): An object containing the user's information.\n  - `id` (number): The user's ID.\n  - `name` (string): The user's name.\n  - `email` (string): The user's email.\n  - `mobile_number` (number): The user's mobile number.\n  - `address` (string): The user's address.\n  - `role` (number): The user's role.\n  - `status` (number): The user's status.\n  - `created_at` (string): The timestamp when the user was created.\n  - `updated_at` (string): The timestamp when the user was last updated.\n  - `token` (string): The authentication token for the user.\n\n#### Example Response\n```json\n{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"id\": 0,\n        \"name\": \"\",\n        \"email\": \"\",\n        \"mobile_number\": 0,\n        \"address\": \"\",\n        \"role\": 0,\n        \"status\": 0,\n        \"created_at\": \"\",\n        \"updated_at\": \"\",\n        \"token\": \"\"\n    }\n}\n```\n\n#### JSON Schema\n```json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"success\": {\n            \"type\": \"boolean\"\n        },\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"id\": {\n                    \"type\": \"number\"\n                },\n                \"name\": {\n                    \"type\": \"string\"\n                },\n                \"email\": {\n                    \"type\": \"string\"\n                },\n                \"mobile_number\": {\n                    \"type\": \"number\"\n                },\n                \"address\": {\n                    \"type\": \"string\"\n                },\n                \"role\": {\n                    \"type\": \"number\"\n                },\n                \"status\": {\n                    \"type\": \"number\"\n                },\n                \"created_at\": {\n                    \"type\": \"string\"\n                },\n                \"updated_at\": {\n                    \"type\": \"string\"\n                },\n                \"token\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n```\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update procurement-manager (Admin/procurement-manager both) | {{host}}/api/procurement-manager/update-procurement-manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"",
+									"pm.test(\"The success field should be true\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.success).to.be.true;",
+									"});",
+									"",
+									"",
+									"pm.test(\"The 'message' field is an empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.message).to.be.a('string').and.to.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"The data field should be null\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.data).to.be.null;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is 'application/json'\", function () {",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.equal('application/json');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Krishna Karn\",\r\n    \"address\": \"123 Main St, City, Country\",\r\n    \"password\": \"hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/procurement-manager/update-procurement-manager",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"procurement-manager",
+								"update-procurement-manager"
+							]
+						},
+						"description": "### Update User Information\n\nThis endpoint allows the user to update their information.\n\n#### Request Body\n\n- `id` (number, optional): The id of the user if admin wants to update.\n- `name` (string, optional): The updated name of the user.\n- `address` (string, optional): The updated address of the user.\n- `password` (string, optional): The user's password for authentication.\n    \n\n#### Response\n\n- `Status: 302`\n- `Content-Type: application/json`\n    \n\n##### Successful Response\n\n``` json\n{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"id\": 0,\n        \"name\": \"\",\n        \"email\": \"\",\n        \"mobile_number\": 0,\n        \"address\": \"\",\n        \"role\": 0,\n        \"status\": 0,\n        \"created_at\": \"\",\n        \"updated_at\": \"\"\n    }\n}\n\n ```\n\n##### Failed Response\n\nIn case of a failed response, specific error messages and status codes will be provided to indicate the reason for the failure."
+					},
+					"response": []
+				},
+				{
+					"name": "Send Order Doc by procurement-manager | {{host}}/api/procurement-manager/send-order-doc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"",
+									"pm.test(\"The success field should be true\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.success).to.be.true;",
+									"});",
+									"",
+									"",
+									"pm.test(\"The 'message' field is an empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.message).to.be.a('string').and.to.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"The data field should be null\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.data).to.be.null;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is 'application/json'\", function () {",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.equal('application/json');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{proman_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "document",
+									"type": "file",
+									"src": "/home/neosoft/Downloads/Screenshot 2024-02-12 at 11.49.05.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/procurement-manager/send-order-doc",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"procurement-manager",
+								"send-order-doc"
+							]
+						},
+						"description": "### Update User Information\n\nThis endpoint allows the user to update their information.\n\n#### Request Body\n\n- `id` (number, optional): The id of the user if admin wants to update.\n- `name` (string, optional): The updated name of the user.\n- `address` (string, optional): The updated address of the user.\n- `password` (string, optional): The user's password for authentication.\n    \n\n#### Response\n\n- `Status: 302`\n- `Content-Type: application/json`\n    \n\n##### Successful Response\n\n``` json\n{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"id\": 0,\n        \"name\": \"\",\n        \"email\": \"\",\n        \"mobile_number\": 0,\n        \"address\": \"\",\n        \"role\": 0,\n        \"status\": 0,\n        \"created_at\": \"\",\n        \"updated_at\": \"\"\n    }\n}\n\n ```\n\n##### Failed Response\n\nIn case of a failed response, specific error messages and status codes will be provided to indicate the reason for the failure."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete procurement-manager by procurement-manager/Admin | {{host}}/api/procurement-manager/delete-procurement-manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.success).to.exist;",
+									"    pm.expect(responseData.message).to.exist;",
+									"    pm.expect(responseData.data).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the 'success' field is true\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.success).to.be.true;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the 'data' field is an object\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.data).to.be.an('object');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"668e26bb6a8b7b71c69a5483\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/procurement-manager/delete-procurement-manager",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"procurement-manager",
+								"delete-procurement-manager"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get procurement-manager Data by Admin | {{host}}/api/procurement-manager/get-procurement-manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the success field in the response\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.success).to.exist.and.to.be.a('boolean');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the 'data' object in the response\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.data).to.exist.and.to.be.an('object');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Name and email fields are non-empty strings\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.data.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name field should not be empty\");",
+									"  pm.expect(responseData.data.email).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Email field should not be empty\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/procurement-manager/get-procurement-manager?_id=668e26bb6a8b7b71c69a5483",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"procurement-manager",
+								"get-procurement-manager"
+							],
+							"query": [
+								{
+									"key": "_id",
+									"value": "668e26bb6a8b7b71c69a5483"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All procurement-manager by Admin | {{host}}/api/procurement-manager/get-all-procurement-managers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response content type is 'application/json'\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the 'success' field is true\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.success).to.be.true;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that 'users' array is present and contains at least one element\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.users).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/procurement-manager/get-all-procurement-managers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"procurement-manager",
+								"get-all-procurement-managers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inspection Manager",
+			"item": [
+				{
+					"name": "Register inspection-manager | {{host}}/api/inspection-manager/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Inspection one\",\r\n    \"email\": \"inspection1@example.com\",\r\n    \"mobile_number\": 1234561011,\r\n    \"password\": \"insman1\",\r\n    \"address\": \"123 Main St, City, Country\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/inspection-manager/register",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"inspection-manager",
+								"register"
+							]
+						},
+						"description": "\nThe `POST /api/user/register` endpoint is used to register a new user. The request should include the user's name, email, mobile number, password, and address in the request body.\n\n### Request Body\n- `name` (string): The name of the user.\n- `email` (string): The email address of the user.\n- `mobile_number` (number): The mobile number of the user.\n- `password` (string): The password for the user account.\n- `address` (string): The address of the user.\n\n### Response\nThe response for this request is in JSON format with the following schema:\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"success\": {\n      \"type\": \"boolean\"\n    },\n    \"message\": {\n      \"type\": \"string\"\n    },\n    \"data\": {\n      \"type\": \"null\"\n    }\n  }\n}\n```\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Login Inspection-manager | {{host}}/api/inspection-manager/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mobile_number\": 1234561011,\r\n    \"password\": \"insman1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/inspection-manager/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"inspection-manager",
+								"login"
+							]
+						},
+						"description": "\n### Login User\n\nThis endpoint allows users to log in by providing their email and password.\n\n#### Request Body\n- `email` (string, required): The email of the user.\n- `password` (string, required): The password of the user.\n\n#### Response\nThe response is a JSON object with the following properties:\n- `success` (boolean): Indicates if the login was successful.\n- `message` (string): A message related to the login process.\n- `data` (object): An object containing the user's information.\n  - `id` (number): The user's ID.\n  - `name` (string): The user's name.\n  - `email` (string): The user's email.\n  - `mobile_number` (number): The user's mobile number.\n  - `address` (string): The user's address.\n  - `role` (number): The user's role.\n  - `status` (number): The user's status.\n  - `created_at` (string): The timestamp when the user was created.\n  - `updated_at` (string): The timestamp when the user was last updated.\n  - `token` (string): The authentication token for the user.\n\n#### Example Response\n```json\n{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"id\": 0,\n        \"name\": \"\",\n        \"email\": \"\",\n        \"mobile_number\": 0,\n        \"address\": \"\",\n        \"role\": 0,\n        \"status\": 0,\n        \"created_at\": \"\",\n        \"updated_at\": \"\",\n        \"token\": \"\"\n    }\n}\n```\n\n#### JSON Schema\n```json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"success\": {\n            \"type\": \"boolean\"\n        },\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"id\": {\n                    \"type\": \"number\"\n                },\n                \"name\": {\n                    \"type\": \"string\"\n                },\n                \"email\": {\n                    \"type\": \"string\"\n                },\n                \"mobile_number\": {\n                    \"type\": \"number\"\n                },\n                \"address\": {\n                    \"type\": \"string\"\n                },\n                \"role\": {\n                    \"type\": \"number\"\n                },\n                \"status\": {\n                    \"type\": \"number\"\n                },\n                \"created_at\": {\n                    \"type\": \"string\"\n                },\n                \"updated_at\": {\n                    \"type\": \"string\"\n                },\n                \"token\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n```\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update inspection-manager (Admin/inspection-manager both) | {{host}}/api/inspection-manager/update-inspection-manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Krishna Karn\",\r\n    \"address\": \"123 Main St, City, Country\",\r\n    \"password\": \"hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/inspection-manager/update-inspection-manager",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"inspection-manager",
+								"update-inspection-manager"
+							]
+						},
+						"description": "### Update User Information\n\nThis endpoint allows the user to update their information.\n\n#### Request Body\n\n- `id` (number, optional): The id of the user if admin wants to update.\n- `name` (string, optional): The updated name of the user.\n- `address` (string, optional): The updated address of the user.\n- `password` (string, optional): The user's password for authentication.\n    \n\n#### Response\n\n- `Status: 302`\n- `Content-Type: application/json`\n    \n\n##### Successful Response\n\n``` json\n{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"id\": 0,\n        \"name\": \"\",\n        \"email\": \"\",\n        \"mobile_number\": 0,\n        \"address\": \"\",\n        \"role\": 0,\n        \"status\": 0,\n        \"created_at\": \"\",\n        \"updated_at\": \"\"\n    }\n}\n\n ```\n\n##### Failed Response\n\nIn case of a failed response, specific error messages and status codes will be provided to indicate the reason for the failure."
+					},
+					"response": []
+				},
+				{
+					"name": "Assign/Un-assign Proc manager to inspection-manager by Admin | {{host}}/api/inspection-manager/assign-unassign-proc-manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inspectionId\": \"668f8d777a7be269d5a5c5d2\",\r\n    \"procurementId\": \"668e26bb6a8b7b71c69a5483\",\r\n    \"isAssigning\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/inspection-manager/assign-unassign-proc-manager",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"inspection-manager",
+								"assign-unassign-proc-manager"
+							]
+						},
+						"description": "### Update User Information\n\nThis endpoint allows the user to update their information.\n\n#### Request Body\n\n- `id` (number, optional): The id of the user if admin wants to update.\n- `name` (string, optional): The updated name of the user.\n- `address` (string, optional): The updated address of the user.\n- `password` (string, optional): The user's password for authentication.\n    \n\n#### Response\n\n- `Status: 302`\n- `Content-Type: application/json`\n    \n\n##### Successful Response\n\n``` json\n{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"id\": 0,\n        \"name\": \"\",\n        \"email\": \"\",\n        \"mobile_number\": 0,\n        \"address\": \"\",\n        \"role\": 0,\n        \"status\": 0,\n        \"created_at\": \"\",\n        \"updated_at\": \"\"\n    }\n}\n\n ```\n\n##### Failed Response\n\nIn case of a failed response, specific error messages and status codes will be provided to indicate the reason for the failure."
+					},
+					"response": []
+				},
+				{
+					"name": "Send Order Doc by procurement-manager | {{host}}/api/procurement-manager/send-order-doc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"",
+									"pm.test(\"The success field should be true\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.success).to.be.true;",
+									"});",
+									"",
+									"",
+									"pm.test(\"The 'message' field is an empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.message).to.be.a('string').and.to.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"The data field should be null\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.data).to.be.null;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is 'application/json'\", function () {",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.equal('application/json');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{proman_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "document",
+									"type": "file",
+									"src": "/home/neosoft/Downloads/Screenshot 2024-02-12 at 11.49.05.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/procurement-manager/send-order-doc",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"procurement-manager",
+								"send-order-doc"
+							]
+						},
+						"description": "### Update User Information\n\nThis endpoint allows the user to update their information.\n\n#### Request Body\n\n- `id` (number, optional): The id of the user if admin wants to update.\n- `name` (string, optional): The updated name of the user.\n- `address` (string, optional): The updated address of the user.\n- `password` (string, optional): The user's password for authentication.\n    \n\n#### Response\n\n- `Status: 302`\n- `Content-Type: application/json`\n    \n\n##### Successful Response\n\n``` json\n{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"id\": 0,\n        \"name\": \"\",\n        \"email\": \"\",\n        \"mobile_number\": 0,\n        \"address\": \"\",\n        \"role\": 0,\n        \"status\": 0,\n        \"created_at\": \"\",\n        \"updated_at\": \"\"\n    }\n}\n\n ```\n\n##### Failed Response\n\nIn case of a failed response, specific error messages and status codes will be provided to indicate the reason for the failure."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete procurement-manager by procurement-manager/Admin | {{host}}/api/procurement-manager/delete-procurement-manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.success).to.exist;",
+									"    pm.expect(responseData.message).to.exist;",
+									"    pm.expect(responseData.data).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the 'success' field is true\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.success).to.be.true;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the 'data' field is an object\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.data).to.be.an('object');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"668e26bb6a8b7b71c69a5483\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/procurement-manager/delete-procurement-manager",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"procurement-manager",
+								"delete-procurement-manager"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get procurement-manager Data by Admin | {{host}}/api/procurement-manager/get-procurement-manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the success field in the response\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.success).to.exist.and.to.be.a('boolean');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the 'data' object in the response\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.data).to.exist.and.to.be.an('object');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Name and email fields are non-empty strings\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.data.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name field should not be empty\");",
+									"  pm.expect(responseData.data.email).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Email field should not be empty\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/procurement-manager/get-procurement-manager?_id=668e26bb6a8b7b71c69a5483",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"procurement-manager",
+								"get-procurement-manager"
+							],
+							"query": [
+								{
+									"key": "_id",
+									"value": "668e26bb6a8b7b71c69a5483"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All procurement-manager by Admin | {{host}}/api/procurement-manager/get-all-procurement-managers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response content type is 'application/json'\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the 'success' field is true\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.success).to.be.true;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that 'users' array is present and contains at least one element\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.users).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/procurement-manager/get-all-procurement-managers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"procurement-manager",
+								"get-all-procurement-managers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Checklist",
+			"item": [
+				{
+					"name": "Create checklist by Admin/Procurement Manager | {{host}}/api/checklist/create-checklist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has required fields\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.success).to.exist;",
+									"  pm.expect(responseData.message).to.exist;",
+									"  pm.expect(responseData.data).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Success field is a boolean\", function() {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData.success).to.be.a('boolean');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field is a string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.message).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Data field is an object\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.data).to.be.an('object');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{proman_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"beforeLoading\": \"\",\n    \"afterLoading\": \"\",\n    \"driverDetails\": {\n        \"isLicensePresent\": \"yes/no\",\n        \"isDriverNumberActive\": \"yes/no\",\n        \"isAirPressureChecked\": \"yes/no\"\n    },\n    \"goods\": {\n        \"camera\": \"yes/no\",\n        \"category\": \"electronics\"\n    },\n    \"summary\": \"summary\",\n    \"clientId\": \"668fb03bed2e7ded9b003f97\",\n    \"order_id\": \"668fb0d4ed2e7ded9b003f9b\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/checklist/create-checklist",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"checklist",
+								"create-checklist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update checklist | {{host}}/api/checklist/update-checklist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{insman_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "beforeLoading",
+									"type": "file",
+									"src": "/home/neosoft/Downloads/IMG_20240710_140600.jpg"
+								},
+								{
+									"key": "afterLoading",
+									"type": "file",
+									"src": "/home/neosoft/Downloads/IMG_20240710_140627.jpg"
+								},
+								{
+									"key": "driverDetails.isLicensePresent",
+									"value": "yes",
+									"type": "text"
+								},
+								{
+									"key": "driverDetails.isDriverNumberActive",
+									"value": "yes",
+									"type": "text"
+								},
+								{
+									"key": "driverDetails.isAirPressureChecked",
+									"value": "yes",
+									"type": "text"
+								},
+								{
+									"key": "goods.camera",
+									"value": "yes",
+									"type": "text"
+								},
+								{
+									"key": "goods.category",
+									"value": "electronics",
+									"type": "text"
+								},
+								{
+									"key": "summary",
+									"value": "Before and after images are uploaded and the goods is camera.",
+									"type": "text"
+								},
+								{
+									"key": "checklist_id",
+									"value": "6691287f762d2bdce6c5265a",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/checklist/update-checklist",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"checklist",
+								"update-checklist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign/Unassign the checklist to inspection manager | {{host}}/api/checklist/assign-unassign-checklist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"inspectionId\": \"6691093b652612de74e1c8a9\",\n    \"checklist_id\": \"6691287f762d2bdce6c5265a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/checklist/assign-unassign-checklist",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"checklist",
+								"assign-unassign-checklist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Checklist | {{host}}/api/checklist/delete-checklist?checklist_id=6690e066f421271c7b13c208",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 404\", function () {",
+									"  pm.expect(pm.response.code).to.equal(404);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields - success, message, and data\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.success).to.exist;",
+									"    pm.expect(responseData.message).to.exist;",
+									"    pm.expect(responseData.data).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Success field is a boolean\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.success).to.be.a('boolean');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message field is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.message).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Data field is null\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData.data).to.be.null;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/checklist/delete-checklist?checklist_id=6690e066f421271c7b13c208",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"checklist",
+								"delete-checklist"
+							],
+							"query": [
+								{
+									"key": "checklist_id",
+									"value": "6690e066f421271c7b13c208"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Checklists | {{host}}/api/checklist/all-checklists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.success).to.exist;",
+									"    pm.expect(responseData.message).to.exist;",
+									"    pm.expect(responseData.data).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Total cart items is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"  ",
+									"    pm.expect(responseData.data.total_cart_items).to.be.a('number');",
+									"    pm.expect(responseData.data.total_cart_items).to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that total_cart_value is a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.data.total_cart_value).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the 'items' array is present in the response and contains at least one element\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.items).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/checklist/all-checklists",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"checklist",
+								"all-checklists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Checklist By Id | {{host}}/api/checklist/get-checklist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.success).to.exist;",
+									"    pm.expect(responseData.message).to.exist;",
+									"    pm.expect(responseData.data).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Total cart items is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"  ",
+									"    pm.expect(responseData.data.total_cart_items).to.be.a('number');",
+									"    pm.expect(responseData.data.total_cart_items).to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that total_cart_value is a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.data.total_cart_value).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the 'items' array is present in the response and contains at least one element\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.items).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/checklist/get-checklist?checklist_id=6691287f762d2bdce6c5265a",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"checklist",
+								"get-checklist"
+							],
+							"query": [
+								{
+									"key": "checklist_id",
+									"value": "6691287f762d2bdce6c5265a"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
