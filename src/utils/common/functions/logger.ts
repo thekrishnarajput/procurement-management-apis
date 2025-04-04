@@ -1,3 +1,4 @@
+// logger.ts
 import pino, { LevelWithSilent, Logger } from "pino";
 import createLogger from "./loggerInitializer";
 import { LoggerType } from "../enums/loggerTypes";

@@ -1,3 +1,4 @@
+// loggerInitializer.ts
 import pino, { LevelWithSilent, Logger } from "pino";
 import path from "path";
 import fs from "fs";
